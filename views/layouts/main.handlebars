@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{title}} — Buzzboard</title>
+  <title>{{title}} - Buzzboard</title>
+  <link rel="icon" type="image/png" href="/images/buzzboard.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Syne+Mono&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
   <nav class="navbar">
     <div class="nav-brand">
       <a href="{{#if isLoggedIn}}/dashboard{{else}}/auth/login{{/if}}">
-        <span class="nav-logo">BB</span>
-        BUZZBOARD
+        <img src="/images/buzzboard.png" alt="Buzzboard" class="nav-logo-img" />
+        <span class="nav-brand-text"><span class="nav-buzz">BUZZ</span><span class="nav-board">BOARD</span></span>
       </a>
     </div>
 
@@ -40,7 +41,7 @@
   </main>
 
   <footer class="footer">
-    BUZZBOARD &mdash; P1 &mdash; MVC + Observer + Singleton
+    BUZZBOARD / P1 / MVC + Observer + Singleton
   </footer>
 </body>
 </html>

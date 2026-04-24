@@ -2,7 +2,7 @@
   <div>
     <p class="dash-eyebrow">Welcome back, {{currentUser.username}}</p>
     <h1 class="dash-title">MY <span>FEED</span></h1>
-    <p class="dash-subtitle">{{topics.length}} subscribed topic(s) &middot; latest activity</p>
+    <p class="dash-subtitle">{{topics.length}} subscribed topic(s) / latest activity</p>
   </div>
   <div class="dash-actions">
     <a href="/topics" class="btn btn-outline">Browse All Topics</a>
@@ -40,7 +40,7 @@
           {{/each}}
         </div>
       {{else}}
-        <p class="no-messages">No messages yet — <a href="/topics/{{_id}}">be the first to post</a></p>
+        <p class="no-messages">No messages yet. <a href="/topics/{{_id}}">Be the first to post</a></p>
       {{/if}}
 
       <div class="topic-card-footer">

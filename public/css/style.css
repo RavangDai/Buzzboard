@@ -4,7 +4,7 @@
    Fonts: Syne (display + body) · Syne Mono (meta)
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Syne+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,300;0,400;0,600;0,700;1,400&display=swap');
 
 /* --- Reset --- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -46,7 +46,7 @@
 
 /* --- Base --- */
 body {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
@@ -85,20 +85,22 @@ a:hover { color: var(--white); text-decoration: none; }
   text-decoration: none;
 }
 
-.nav-logo {
-  width: 30px;
-  height: 30px;
-  background: var(--lime);
-  color: #080808;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: .72rem;
-  font-weight: 800;
-  letter-spacing: -.03em;
+.nav-logo-img {
+  height: 32px;
+  width: 32px;
+  object-fit: contain;
   flex-shrink: 0;
 }
+
+.nav-brand-text {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  line-height: 1;
+}
+
+.nav-buzz  { color: var(--white); }
+.nav-board { color: var(--lime);  }
 
 .nav-links {
   display: flex;
@@ -151,7 +153,7 @@ a:hover { color: var(--white); text-decoration: none; }
   color: #080808;
   padding: .52rem 1.15rem;
   border-radius: var(--radius-pill);
-  font-family: 'Syne', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-weight: 700;
   font-size: .855rem;
   border: none;
@@ -159,7 +161,7 @@ a:hover { color: var(--white); text-decoration: none; }
   transition: background .18s, transform .15s, box-shadow .18s;
   text-decoration: none;
   letter-spacing: -.01em;
-  line-height: 1;
+  line-height: 1.3;
 }
 
 .btn:hover {
@@ -222,7 +224,7 @@ a:hover { color: var(--white); text-decoration: none; }
   border: 1.5px solid var(--border-2);
   border-radius: var(--radius);
   font-size: .92rem;
-  font-family: 'Syne', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   background: var(--surface-2);
   color: var(--text);
   transition: border-color .15s, box-shadow .15s;
@@ -333,7 +335,7 @@ a:hover { color: var(--white); text-decoration: none; }
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: -.05em;
-  line-height: .95;
+  line-height: 1.05;
   color: var(--white);
 }
 
@@ -451,7 +453,7 @@ a:hover { color: var(--white); text-decoration: none; }
 .msg-time {
   color: var(--text-3);
   font-size: .69rem;
-  font-family: 'Syne Mono', monospace;
+  font-family: 'Josefin Sans', monospace;
   flex-shrink: 0;
 }
 
@@ -527,7 +529,7 @@ a:hover { color: var(--white); text-decoration: none; }
   display: inline-block;
   margin-bottom: .45rem;
   transition: color .15s;
-  font-family: 'Syne Mono', monospace;
+  font-family: 'Josefin Sans', monospace;
 }
 
 .back-link:hover { color: var(--lime); }
@@ -583,7 +585,7 @@ a:hover { color: var(--white); text-decoration: none; }
 .message-body { flex: 1; min-width: 0; }
 .message-meta { display: flex; gap: .7rem; align-items: baseline; margin-bottom: .3rem; }
 .message-author { font-size: .84rem; font-weight: 700; color: var(--lime); }
-.message-time   { font-size: .72rem; color: var(--text-3); font-family: 'Syne Mono', monospace; }
+.message-time   { font-size: .72rem; color: var(--text-3); font-family: 'Josefin Sans', monospace; }
 .message-text   { font-size: .9rem; color: var(--text-2); word-break: break-word; line-height: 1.65; }
 
 /* ─── Post Message Box ────────────────────────────────────── */
@@ -721,7 +723,7 @@ a:hover { color: var(--white); text-decoration: none; }
 .stats-table tr:last-child td { border-bottom: none; }
 .stats-table tr:hover td { background: var(--surface-2); color: var(--text); }
 
-.rank { font-weight: 700; color: var(--text-3); font-family: 'Syne Mono', monospace; }
+.rank { font-weight: 700; color: var(--text-3); font-family: 'Josefin Sans', monospace; }
 
 .bar-bg   { background: var(--surface-3); border-radius: var(--radius-pill); height: 6px; min-width: 80px; }
 .bar-fill { background: var(--lime);      border-radius: var(--radius-pill); height: 6px; min-width: 4px; transition: width .4s ease; }
@@ -778,7 +780,7 @@ a:hover { color: var(--white); text-decoration: none; }
   font-size: .73rem;
   color: var(--text-3);
   letter-spacing: .04em;
-  font-family: 'Syne Mono', monospace;
+  font-family: 'Josefin Sans', monospace;
 }
 
 /* ─── Responsive ──────────────────────────────────────────── */
