@@ -85,6 +85,12 @@ app.use(session({
 // ── Attach current user to all views ─────────────────────────────────────────
 app.use(attachUser);
 
+// ── Attach global view locals ─────────────────────────────────────────────────
+app.use((req, res, next) => {
+  res.locals.currentYear = new Date().getFullYear();
+  next();
+});
+
 // ── Routes ───────────────────────────────────────────────────────────────────
 app.get('/', (req, res) => {
   res.redirect(req.session.userId ? '/dashboard' : '/auth/login');
