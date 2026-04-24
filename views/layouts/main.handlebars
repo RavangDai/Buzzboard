@@ -11,6 +11,28 @@
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
+
+  <!-- Aceternity-style gradient animation background -->
+  <div class="gradient-bg" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+          <feColorMatrix in="blur" mode="matrix"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
+          <feBlend in="SourceGraphic" in2="goo" />
+        </filter>
+      </defs>
+    </svg>
+    <div class="grad-blobs">
+      <div class="gb gb1"></div>
+      <div class="gb gb2"></div>
+      <div class="gb gb3"></div>
+      <div class="gb gb4"></div>
+      <div class="gb gb5"></div>
+    </div>
+  </div>
+
   <nav class="navbar">
     <div class="nav-brand">
       <a href="{{#if isLoggedIn}}/dashboard{{else}}/auth/login{{/if}}">
