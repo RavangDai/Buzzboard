@@ -1,9 +1,10 @@
-<div class="page-header">
+<div class="dash-header">
   <div>
-    <h1>My Dashboard</h1>
-    <p class="page-subtitle">Your subscribed topics and their latest messages.</p>
+    <p class="dash-eyebrow">Welcome back, {{currentUser.username}}</p>
+    <h1 class="dash-title">MY <span>FEED</span></h1>
+    <p class="dash-subtitle">{{topics.length}} subscribed topic(s) &middot; latest activity</p>
   </div>
-  <div class="header-actions">
+  <div class="dash-actions">
     <a href="/topics" class="btn btn-outline">Browse All Topics</a>
     <a href="/topics/new" class="btn">+ New Topic</a>
   </div>
@@ -18,21 +19,20 @@
           <h2><a href="/topics/{{_id}}">{{title}}</a></h2>
           {{#if description}}<p class="topic-desc">{{description}}</p>{{/if}}
         </div>
-        <!-- T2.2: Unsubscribe button next to each subscribed topic -->
         <form action="/topics/{{_id}}/unsubscribe" method="POST" class="inline-form">
           <input type="hidden" name="returnTo" value="/dashboard" />
           <button type="submit" class="btn btn-sm btn-danger-outline"
                   onclick="return confirm('Unsubscribe from this topic?')">
-            Unsubscribe
+            Leave
           </button>
         </form>
       </div>
 
-      <!-- T2.1: Show the 2 most recent messages -->
       {{#if messages.length}}
         <div class="message-preview-list">
           {{#each messages}}
           <div class="message-preview">
+            <span class="msg-dot"></span>
             <span class="msg-author">{{author.username}}</span>
             <span class="msg-content">{{content}}</span>
             <span class="msg-time">{{formatDate createdAt}}</span>
@@ -40,11 +40,11 @@
           {{/each}}
         </div>
       {{else}}
-        <p class="no-messages">No messages yet. <a href="/topics/{{_id}}">Be the first to post!</a></p>
+        <p class="no-messages">No messages yet — <a href="/topics/{{_id}}">be the first to post</a></p>
       {{/if}}
 
       <div class="topic-card-footer">
-        <a href="/topics/{{_id}}" class="btn btn-sm">View Topic →</a>
+        <a href="/topics/{{_id}}" class="btn btn-sm">Open Topic →</a>
       </div>
     </div>
     {{/each}}
@@ -54,7 +54,7 @@
   <div class="empty-state">
     <div class="empty-icon">📭</div>
     <h2>No subscriptions yet</h2>
-    <p>You haven't subscribed to any topics. Browse all topics or start a new one!</p>
+    <p>You haven't subscribed to any topics yet.<br>Browse all topics or start a new one.</p>
     <div class="empty-actions">
       <a href="/topics" class="btn btn-outline">Browse Topics</a>
       <a href="/topics/new" class="btn">Start a Topic</a>
