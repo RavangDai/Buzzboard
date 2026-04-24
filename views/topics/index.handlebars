@@ -1,0 +1,47 @@
+<div class="page-header">
+  <div>
+    <h1>All Topics</h1>
+    <p class="page-subtitle">Browse topics and subscribe to the ones you like.</p>
+  </div>
+  <a href="/topics/new" class="btn">+ Start a Topic</a>
+</div>
+
+{{#if topics.length}}
+  <div class="topics-grid">
+    {{#each topics}}
+    <div class="topic-row {{#if isSubscribed}}subscribed{{/if}}">
+      <div class="topic-row-info">
+        <h3><a href="/topics/{{_id}}">{{title}}</a></h3>
+        {{#if description}}<p class="topic-desc">{{description}}</p>{{/if}}
+        <div class="topic-meta">
+          <span>👤 {{creator.username}}</span>
+          <span>💬 {{messageCount}} messages</span>
+          <span>👁 {{accessCount}} views</span>
+        </div>
+      </div>
+
+      <div class="topic-row-action">
+        {{#if isSubscribed}}
+          <span class="badge badge-subscribed">✓ Subscribed</span>
+          <form action="/topics/{{_id}}/unsubscribe" method="POST" class="inline-form">
+            <input type="hidden" name="returnTo" value="/topics" />
+            <button type="submit" class="btn btn-sm btn-danger-outline">Unsubscribe</button>
+          </form>
+        {{else}}
+          <form action="/topics/{{_id}}/subscribe" method="POST" class="inline-form">
+            <input type="hidden" name="returnTo" value="/topics" />
+            <button type="submit" class="btn btn-sm">Subscribe</button>
+          </form>
+        {{/if}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+{{else}}
+  <div class="empty-state">
+    <div class="empty-icon">📋</div>
+    <h2>No topics yet</h2>
+    <p>Be the first to start a conversation!</p>
+    <a href="/topics/new" class="btn">Start a Topic</a>
+  </div>
+{{/if}}

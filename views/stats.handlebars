@@ -1,0 +1,67 @@
+<div class="page-header">
+  <div>
+    <h1>📊 Topic Statistics</h1>
+    <p class="page-subtitle">Live access counts for all topics (updated by the Observer on each visit).</p>
+  </div>
+  <a href="/api/stats" target="_blank" class="btn btn-outline">View JSON API</a>
+</div>
+
+<!-- Summary Cards -->
+<div class="stats-summary">
+  <div class="stat-card">
+    <div class="stat-number">{{topicCount}}</div>
+    <div class="stat-label">Total Topics</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">{{totalAccesses}}</div>
+    <div class="stat-label">Total Topic Views</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">{{totalMessages}}</div>
+    <div class="stat-label">Total Messages</div>
+  </div>
+</div>
+
+<!-- Stats Table -->
+{{#if topics.length}}
+<div class="table-wrapper">
+  <table class="stats-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Topic</th>
+        <th>Created By</th>
+        <th>Messages</th>
+        <th>Times Accessed</th>
+        <th>Access Bar</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each topics}}
+      <tr>
+        <td class="rank">{{addOne @index}}</td>
+        <td><a href="/topics/{{_id}}">{{title}}</a></td>
+        <td>{{creator.username}}</td>
+        <td>{{messageCount}}</td>
+        <td><strong>{{accessCount}}</strong></td>
+        <td>
+          <div class="bar-bg">
+            <div class="bar-fill" style="width: {{accessPercent this ../topics}}%"></div>
+          </div>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+{{else}}
+<div class="empty-state">
+  <div class="empty-icon">📊</div>
+  <p>No topics have been accessed yet.</p>
+</div>
+{{/if}}
+
+<p class="stats-note">
+  Access counts are incremented automatically each time a topic is viewed,
+  using the <strong>Observer pattern</strong> (TopicService → TopicObserver).
+</p>

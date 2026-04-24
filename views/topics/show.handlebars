@@ -1,0 +1,75 @@
+<div class="topic-header">
+  <div class="topic-header-info">
+    <a href="/topics" class="back-link">← All Topics</a>
+    <h1>{{topic.title}}</h1>
+    {{#if topic.description}}<p class="topic-desc-lg">{{topic.description}}</p>{{/if}}
+    <div class="topic-meta">
+      <span>👤 Started by {{topic.creator.username}}</span>
+      <span>💬 {{messages.length}} messages</span>
+      <span>👁 {{topic.accessCount}} views</span>
+    </div>
+  </div>
+
+  <div class="topic-header-actions">
+    {{#if isSubscribed}}
+      <span class="badge badge-subscribed">✓ Subscribed</span>
+      <form action="/topics/{{topic._id}}/unsubscribe" method="POST" class="inline-form">
+        <input type="hidden" name="returnTo" value="/topics/{{topic._id}}" />
+        <button type="submit" class="btn btn-sm btn-danger-outline"
+                onclick="return confirm('Unsubscribe from this topic?')">
+          Unsubscribe
+        </button>
+      </form>
+    {{else}}
+      <form action="/topics/{{topic._id}}/subscribe" method="POST" class="inline-form">
+        <input type="hidden" name="returnTo" value="/topics/{{topic._id}}" />
+        <button type="submit" class="btn btn-sm">Subscribe to Post</button>
+      </form>
+    {{/if}}
+  </div>
+</div>
+
+{{#if errorMsg}}
+<div class="alert alert-error"><p>{{errorMsg}}</p></div>
+{{/if}}
+
+<!-- Messages List -->
+<div class="messages-container">
+  {{#if messages.length}}
+    {{#each messages}}
+    <div class="message-item">
+      <div class="message-avatar">{{firstLetter author.username}}</div>
+      <div class="message-body">
+        <div class="message-meta">
+          <strong class="message-author">{{author.username}}</strong>
+          <span class="message-time">{{formatDate createdAt}}</span>
+        </div>
+        <p class="message-text">{{content}}</p>
+      </div>
+    </div>
+    {{/each}}
+  {{else}}
+    <div class="empty-state small">
+      <p>No messages yet. {{#if isSubscribed}}Be the first to post!{{else}}Subscribe to post a message.{{/if}}</p>
+    </div>
+  {{/if}}
+</div>
+
+<!-- Post a Message Form — only visible to subscribers (T4) -->
+{{#if isSubscribed}}
+<div class="post-message-box">
+  <h3>Post a Message</h3>
+  <form action="/topics/{{topic._id}}/messages" method="POST">
+    <div class="form-group">
+      <textarea name="content" rows="3" placeholder="Write your message here..."
+                maxlength="1000" required></textarea>
+      <small class="form-hint">Up to 1000 characters</small>
+    </div>
+    <button type="submit" class="btn">Post Message</button>
+  </form>
+</div>
+{{else}}
+<div class="subscribe-prompt">
+  <p>📌 <a href="/topics/{{topic._id}}/subscribe">Subscribe to this topic</a> to post messages.</p>
+</div>
+{{/if}}

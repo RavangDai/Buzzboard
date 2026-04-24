@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{title}} — MessageBoard</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">
+      <a href="{{#if isLoggedIn}}/dashboard{{else}}/auth/login{{/if}}">
+        💬 MessageBoard
+      </a>
+    </div>
+    {{#if isLoggedIn}}
+    <div class="nav-links">
+      <a href="/dashboard">Dashboard</a>
+      <a href="/topics">Topics</a>
+      <a href="/topics/new">+ New Topic</a>
+      <a href="/stats">Stats</a>
+      <span class="nav-user">👤 {{currentUser.username}}</span>
+      <a href="/auth/logout" class="btn btn-sm btn-outline">Logout</a>
+    </div>
+    {{else}}
+    <div class="nav-links">
+      <a href="/auth/login">Sign In</a>
+      <a href="/auth/register" class="btn btn-sm">Register</a>
+    </div>
+    {{/if}}
+  </nav>
+
+  <main class="container">
+    {{{body}}}
+  </main>
+
+  <footer class="footer">
+    <p>MessageBoard &mdash; Project P1 &mdash; MVC + Observer + Singleton</p>
+  </footer>
+</body>
+</html>
