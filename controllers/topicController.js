@@ -130,6 +130,7 @@ const topicController = {
         topic,
         messages,
         isSubscribed,
+        errorMsg: req.query.error || null,
       });
     } catch (err) {
       console.error(err);
