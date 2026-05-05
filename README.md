@@ -163,3 +163,52 @@ messageboard/
 └── public/
     └── css/style.css
 ```
+
+ Backend                                                                            
+                                                                                     
+  ┌────────────────┬──────────────────────────────────────────────────────────────┐  
+  │     Layer      │                          Technology                          │
+  ├────────────────┼──────────────────────────────────────────────────────────────┤
+  │ Runtime        │ Node.js                                                      │
+  ├────────────────┼──────────────────────────────────────────────────────────────┤
+  │ Framework      │ Express.js v4                                                │
+  ├────────────────┼──────────────────────────────────────────────────────────────┤
+  │ Database       │ MongoDB (via Mongoose v8 ODM)                                │
+  ├────────────────┼──────────────────────────────────────────────────────────────┤
+  │ Authentication │ bcryptjs (password hashing), express-session (session        │
+  │                │ management)                                                  │
+  ├────────────────┼──────────────────────────────────────────────────────────────┤
+  │ Session Store  │ connect-mongo (stores sessions in MongoDB)                   │
+  ├────────────────┼──────────────────────────────────────────────────────────────┤
+  │ Config         │ dotenv                                                       │
+  └────────────────┴──────────────────────────────────────────────────────────────┘
+
+  Frontend / Templating
+
+  ┌─────────────────┬────────────────────────────────────┐
+  │      Layer      │             Technology             │
+  ├─────────────────┼────────────────────────────────────┤
+  │ Template Engine │ Handlebars (express-handlebars v7) │
+  └─────────────────┴────────────────────────────────────┘
+
+  Architecture Patterns
+
+  - MVC — Models, Views, Controllers separation
+  - Observer Pattern — observers/ directory with Observable, TopicObserver,
+  TopicService
+  - Singleton Pattern — mentioned in description (likely the DB connection)
+
+  Dev Tools
+
+  - nodemon — auto-restart during development
+
+  Project Structure
+
+  routes/     → Express route handlers
+  controllers/ → MVC controllers
+  models/      → Mongoose schemas (User, Topic, Message)
+  views/       → Handlebars templates
+  middleware/  → Auth middleware
+  observers/   → Observer pattern implementation
+  config/      → DB connection config
+
